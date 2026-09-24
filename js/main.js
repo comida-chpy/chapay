@@ -68,34 +68,11 @@ navLinks.forEach((link) => {
 // 4. Lógica para el menú móvil
 const menuBtn = document.getElementById('mobile-menu-btn');
 const mobileMenu = document.getElementById('mobile-menu');
-const mobileNavLinks = document.querySelectorAll('#mobile-menu .nav-link');
 
 if (menuBtn && mobileMenu) {
-  const updateMenuToggle = () => {
-    const isOpen = !mobileMenu.classList.contains('hidden');
-    menuBtn.classList.toggle('is-open', isOpen);
-    menuBtn.setAttribute('aria-expanded', String(isOpen));
-    menuBtn.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
-    const icon = menuBtn.querySelector('svg');
-    if (icon) {
-      icon.setAttribute('data-lucide', isOpen ? 'x' : 'menu');
-      lucide.createIcons();
-    }
-  };
-
   menuBtn.addEventListener('click', () => {
     mobileMenu.classList.toggle('hidden');
-    updateMenuToggle();
   });
-
-  mobileNavLinks.forEach((link) => {
-    link.addEventListener('click', () => {
-      mobileMenu.classList.add('hidden');
-      updateMenuToggle();
-    });
-  });
-
-  updateMenuToggle();
 }
 
 // 5. Redirección de Formulario a WhatsApp
